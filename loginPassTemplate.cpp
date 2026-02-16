@@ -23,19 +23,28 @@ int main() {
 		printf("Accepted\n");
 	}else {
 		printf("Reject\n");
-		printf("%d\n", strlen(password) );
 	}
 }
 
 int checkValidPass(char *ps) {
-	int accepted = 0;
-	if (strlen(ps) == 5){
-		for(int i = 0; i < strlen(ps); i++){
-			if (isdigit(ps[i])){
-				accepted = 1;
+	int accepted = 0, upper_value = 0, num_value = 0;
+	
+	if (strlen(ps) >= 5 && strlen(ps) <= 8 && !isdigit(ps[0])){
+		for(int i = 1; i < strlen(ps); i++){
+			if (isdigit(ps[i])){ //if have number
+				num_value++;
 			}
 		}
+		for(int j = 0; j < strlen(ps); j++){
+			if (isupper(ps[j])){//if have upperchar
+				upper_value++;
+			}
+		}
+		if(upper_value >= 2 && num_value >= 2){
+			accepted = 1;
+		}
 	}
+	
 	return accepted;
 }
 
