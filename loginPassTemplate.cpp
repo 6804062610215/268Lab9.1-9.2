@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <conio.h>
+#include <ctype.h>
 
 int checkLogin(char *login, char *passwd);
 //accepted only if Length = 5 and a number 1 or more digits
@@ -21,15 +23,22 @@ int main() {
 		printf("Accepted\n");
 	}else {
 		printf("Reject\n");
+		printf("%d\n", strlen(password) );
 	}
-
 }
+
 int checkValidPass(char *ps) {
 	int accepted = 0;
-	
-	
+	if (strlen(ps) == 5){
+		for(int i = 0; i < strlen(ps); i++){
+			if (isdigit(ps[i])){
+				accepted = 1;
+			}
+		}
+	}
 	return accepted;
 }
+
 int checkLogin(char *login, char *passwd) {
 	if( !strcmp(login, "student1") && !strcmp(passwd, "mypass"))
 		return 1;
