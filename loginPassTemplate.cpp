@@ -10,10 +10,8 @@ int checkValidPass(char *ps);
 int main() {
 	char login[64], password[64];
 	
-	//printf("Enter login : "); gets(login);
-	//printf("Enter password : "); gets(password);
-	strcpy(login, "student1");
-	strcpy(password, "mTp1AAt2");	
+	printf("Enter login : "); gets(login);
+	printf("Enter password : "); gets(password);
 	
 	if(checkLogin(login, password) == 1) {
 		printf("Welcome\n");
